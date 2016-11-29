@@ -9,12 +9,11 @@ package testdata;
  *
  * @author s156035
  */
-public class Node {
-    int di;
-    int[] neighbour;
+public class Passenger {
+    int location;
+    int destination;
     
-    public Node(int i){
-        di = i;
-        neighbour = new int[di];
+    public Passenger(){
+        //Put method to determine location and destination here
     }
 }

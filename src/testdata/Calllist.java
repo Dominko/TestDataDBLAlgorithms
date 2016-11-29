@@ -9,12 +9,10 @@ package testdata;
  *
  * @author s156035
  */
-public class Node {
-    int di;
-    int[] neighbour;
+public class Calllist {
+    Passenger[] passengers;
     
-    public Node(int i){
-        di = i;
-        neighbour = new int[di];
+    public Calllist(){
+        
     }
 }
