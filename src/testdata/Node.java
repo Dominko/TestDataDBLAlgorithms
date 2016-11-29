@@ -5,16 +5,28 @@
  */
 package testdata;
 
+import java.util.List;
+import java.util.LinkedList;
+import java.util.Random;
+
 /**
  *
  * @author s156035
  */
 public class Node {
     int di;
-    int[] neighbour;
+    List neighbour;
+    Random rng = new Random();
     
-    public Node(int i){
-        di = i;
-        neighbour = new int[di];
+    public Node(int j, int number_nodes){
+        neighbour = new LinkedList();
+        
+        //Make connection between n, n-1 and n+1, to ensure the graph is connected
+        if(j != 0){
+            neighbour.add(j - 1);
+        }
+        if(j != number_nodes-1){
+            neighbour.add(j + 1);
+        }
     }
 }
