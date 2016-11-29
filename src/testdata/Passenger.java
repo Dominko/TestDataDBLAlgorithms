@@ -5,6 +5,9 @@
  */
 package testdata;
 
+import java.util.Random;
+import java.util.Scanner;
+
 /**
  *
  * @author s156035
@@ -12,8 +15,17 @@ package testdata;
 public class Passenger {
     int location;
     int destination;
+    Node nodes[];
     
-    public Passenger(){
+    Scanner sc= new Scanner(System.in);
+    public Passenger(int location){
         //Put method to determine location and destination here
+        //generate random location and do bfs to find if it comes under destination 
+        
+        Random rand = new Random();
+        int n=rand.nextInt(location);
+        }
+        public void bfs(Node passengerNode, Node destinationNode){
+            
     }
 }
