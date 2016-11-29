@@ -5,6 +5,8 @@
  */
 package testdata;
 
+import java.util.Random;
+
 /**
  *
  * @author s156035
@@ -18,14 +20,24 @@ public class TestData {
     
     Node[] nodes;
     
-    Passenger[][] calllist;
+    Calllist[] calllist;
     
     int training_period;
     int total_time;
     
+    Random rng = new Random();
+    
+    //Max amount of passengers to be generated every minute
+    int max_new_passengers = 20;
+    
+    //the amount of zeros we want after the amount of taxis
+    int taxi_order;
+    int node_order;
+    
     public void output(){
         String temp;
-
+        
+        generatePreamble();
         //Preamble
         System.out.println(5 + number_nodes);
         System.out.println(alpha);
@@ -38,18 +50,39 @@ public class TestData {
                 temp = temp.concat(" " + nodes[x].neighbour[y]);
             };
         }
-        System.out.println(training_period + " " + total_time);
         
         generatePassengers();
+        System.out.println(training_period + " " + total_time);
+        for(int x = 0; x < total_time; x++){
+            temp = ""+calllist[x].passengers.length;
+            for(int y = 0; y < nodes[x].di; y++){
+                temp = temp.concat(" " + calllist[x].passengers[y].location + 
+                                   " " + calllist[x].passengers[y].destination);
+            };
+        }
+        
+        
     }
     
     public void generatePassengers(){
         //initialise the set of passengers
-        
+        calllist = new Calllist[total_time];
+
         //Geneate the amount of passengers at all points in time
         for(int x = 0; x < total_time; x++){
-            calllist[x] = new Passenger[x];
+            int amount_of_passengers = rng.nextInt(max_new_passengers);
+            
+            calllist[x] = new Calllist(amount_of_passengers);
         }
+        
+    }
+    
+    public void generatePreamble(){
+        alpha = rng.nextFloat();
+        number_taxis = rng.nextInt(1000) * taxi_order;
+        max_passengers = rng.nextInt(5) + 1;
+        number_nodes = rng.nextInt(1000) * node_order;; 
+        max_time = number_nodes * 10;
         
     }
     

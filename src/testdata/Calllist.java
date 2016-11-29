@@ -12,7 +12,11 @@ package testdata;
 public class Calllist {
     Passenger[] passengers;
     
-    public Calllist(){
+    public Calllist(int amount_of_passengers){
+        passengers = new Passenger[amount_of_passengers];
         
+        for(int x = 0; x < amount_of_passengers; x++){
+            passengers[x] = new Passenger();
+        }
     }
 }
