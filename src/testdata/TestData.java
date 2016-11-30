@@ -36,42 +36,47 @@ public class TestData {
     //the amount of zeros we want after the amount of taxis
     int taxi_order = 1;
     int node_order = 1;
-    int repetitions;
+    int repetitions = 1;
     
     public void output(){
         String temp;
         
         System.out.println("set the amount of repetitions");
         repetitions = in.nextInt();
+        System.out.println("set the order of magnitude of the nodes (i.e. 1000 means the amount of nodes is between 1e4 and 1e5");
+        node_order = in.nextInt();
+        System.out.println("set the order of magnitude of the taxis (i.e. 1000 means the amount of taxis is between 1e4 and 1e5");
+        taxi_order = in.nextInt();
         
-        
-        generatePreamble();
-        //Preamble
-        System.out.println(5 + number_nodes);
-        System.out.println(alpha);
-        System.out.println(max_time);
-        System.out.println(number_taxis + " " + max_passengers);
-        System.out.println(number_nodes);
-        
-        generateNodes();
-        for(int x = 0; x < number_nodes; x++){
-            temp = ""+nodes[x].neighbour.size();
-            for(int y = 0; y < nodes[x].neighbour.size(); y++){
-                temp = temp.concat(" " + nodes[x].neighbour.get(y));
-            };
-            System.out.println(temp);
-        }
-        
-        generatePassengers();
-        
-        System.out.println(training_period + " " + total_time);
-        for(int x = 0; x < total_time; x++){
-            temp = ""+calllist[x].passengers.length;
-            for(int y = 0; y < calllist[x].passengers.length; y++){
-                temp = temp.concat(" " + calllist[x].passengers[y].location + 
-                                   " " + calllist[x].passengers[y].destination);
-            };
-            System.out.println(temp);
+        for(int index = 0; index < repetitions; index++){
+            generatePreamble();
+            //Preamble
+            System.out.println(5 + number_nodes);
+            System.out.println(alpha);
+            System.out.println(max_time);
+            System.out.println(number_taxis + " " + max_passengers);
+            System.out.println(number_nodes);
+
+            generateNodes();
+            for(int x = 0; x < number_nodes; x++){
+                temp = ""+nodes[x].neighbour.size();
+                for(int y = 0; y < nodes[x].neighbour.size(); y++){
+                    temp = temp.concat(" " + nodes[x].neighbour.get(y));
+                };
+                System.out.println(temp);
+            }
+
+            generatePassengers();
+
+            System.out.println(training_period + " " + total_time);
+            for(int x = 0; x < total_time; x++){
+                temp = ""+calllist[x].passengers.length;
+                for(int y = 0; y < calllist[x].passengers.length; y++){
+                    temp = temp.concat(" " + calllist[x].passengers[y].location + 
+                                       " " + calllist[x].passengers[y].destination);
+                };
+                System.out.println(temp);
+            }
         }
         
         
