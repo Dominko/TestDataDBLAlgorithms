@@ -76,7 +76,7 @@ public class TestData {
         for(int x = 0; x < total_time; x++){
             int amount_of_passengers = rng.nextInt(max_new_passengers);
             
-            calllist[x] = new Calllist(amount_of_passengers);
+            calllist[x] = new Calllist(amount_of_passengers, number_nodes);
         }
         
     }

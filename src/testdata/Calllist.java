@@ -5,18 +5,21 @@
  */
 package testdata;
 
+import java.util.Random;
+
 /**
  *
  * @author s156035
  */
 public class Calllist {
     Passenger[] passengers;
+    Random rng = new Random();
     
-    public Calllist(int amount_of_passengers){
+    public Calllist(int amount_of_passengers, int node_amount){
         passengers = new Passenger[amount_of_passengers];
         
         for(int x = 0; x < amount_of_passengers; x++){
-            passengers[x] = new Passenger();
+            passengers[x] = new Passenger(rng.nextInt(node_amount));
         }
     }
 }
