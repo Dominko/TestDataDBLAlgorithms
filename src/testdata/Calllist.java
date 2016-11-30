@@ -19,7 +19,7 @@ public class Calllist {
         passengers = new Passenger[amount_of_passengers];
         
         for(int x = 0; x < amount_of_passengers; x++){
-            passengers[x] = new Passenger();
+            passengers[x] = new Passenger(node_amount);
         }
     }
 }

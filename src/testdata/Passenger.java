@@ -15,22 +15,16 @@ import java.util.Random;
 public class Passenger {
     int location;
     int destination;
-    Node nodes[];
-    int ranLocation;
-    int ranDestination;
     Random rand = new Random();
     
-        public Passenger(){
+        public Passenger(int node_amount){
         //Put method to determine location and destination here
         //generate random location and do bfs to find if it comes under destination 
-         ranLocation=rand.nextInt(location);
-         ranDestination=rand.nextInt(destination);
+        location = rand.nextInt(node_amount);
+        destination = rand.nextInt(node_amount);
         
-        while(ranLocation == ranDestination){
-        ranLocation = rand.nextInt();            
-        }
-        while(ranLocation != ranDestination){
-            
+        while(location == destination){
+            location = rand.nextInt(node_amount);            
         }
     }
 }

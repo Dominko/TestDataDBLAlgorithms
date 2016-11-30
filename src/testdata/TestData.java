@@ -19,6 +19,8 @@ public class TestData {
     int max_passengers;
     int number_nodes;  
     
+    Scanner in = new Scanner(System.in);
+    
     Node[] nodes;
     
     Calllist[] calllist;
@@ -29,7 +31,7 @@ public class TestData {
     Random rng = new Random();
     
     //Max amount of passengers to be generated every minute
-    int max_new_passengers = 20;
+    int max_new_passengers = 5;
     
     //the amount of zeros we want after the amount of taxis
     int taxi_order = 1;
@@ -40,7 +42,7 @@ public class TestData {
         String temp;
         
         System.out.println("set the amount of repetitions");
-        repetitions = System.in.toString()
+        repetitions = in.nextInt();
         
         
         generatePreamble();
@@ -61,10 +63,11 @@ public class TestData {
         }
         
         generatePassengers();
+        
         System.out.println(training_period + " " + total_time);
         for(int x = 0; x < total_time; x++){
             temp = ""+calllist[x].passengers.length;
-            for(int y = 0; y < nodes[x].di; y++){
+            for(int y = 0; y < calllist[x].passengers.length; y++){
                 temp = temp.concat(" " + calllist[x].passengers[y].location + 
                                    " " + calllist[x].passengers[y].destination);
             };
@@ -93,7 +96,8 @@ public class TestData {
         max_passengers = rng.nextInt(5) + 1;
         number_nodes = (rng.nextInt(10) * node_order) + 1; 
         max_time = number_nodes * 10;
-        
+        training_period = rng.nextInt(10) + 1;
+        total_time = training_period + rng.nextInt(10) + 1;
     }
     
     public void generateNodes(){
