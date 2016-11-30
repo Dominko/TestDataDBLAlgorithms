@@ -6,6 +6,7 @@
 package testdata;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -33,9 +34,14 @@ public class TestData {
     //the amount of zeros we want after the amount of taxis
     int taxi_order = 1;
     int node_order = 1;
+    int repetitions;
     
     public void output(){
         String temp;
+        
+        System.out.println("set the amount of repetitions");
+        repetitions = System.in.toString()
+        
         
         generatePreamble();
         //Preamble
