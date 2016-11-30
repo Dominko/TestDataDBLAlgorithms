@@ -83,9 +83,9 @@ public class TestData {
     
     public void generatePreamble(){
         alpha = rng.nextFloat();
-        number_taxis = rng.nextInt(10) * taxi_order;
+        number_taxis = (rng.nextInt(10) * taxi_order) + 1;
         max_passengers = rng.nextInt(5) + 1;
-        number_nodes = rng.nextInt(10) * node_order;; 
+        number_nodes = (rng.nextInt(10) * node_order) + 1; 
         max_time = number_nodes * 10;
         
     }
